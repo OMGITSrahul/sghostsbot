@@ -1,12 +1,9 @@
-import re
-infile = open("beanad_ebooks_0.8.txt")
-outfile = open("beanad_ebooks_0.8_.txt", 'w')
-
-dirty = infile.read()
-
-clean = "\n\n".join([line for line in dirty.split("|")])
-
-
-print(clean, file=outfile)
-print(len(clean.split(" ")))
+data = open("singingghosts_tweets.txt").read()
+data = data.replace("\n", " \n ")
+words = [word for word in data.split(" ") if "http" not in word]
+outfile = open("singingghosts_tweets_neat.txt", 'w')
+for word in words:
+	print(word, file=outfile, end=' ')
+outfile.flush()
 outfile.close()
+
